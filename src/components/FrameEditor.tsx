@@ -155,7 +155,7 @@ const FrameEditor = () => {
   const renderPreview = () => (
     <div
       ref={previewRef}
-      className="relative w-[400px] h-[500px] bg-card overflow-hidden shadow-card"
+      className="relative w-[400px] h-[420px] bg-card overflow-hidden shadow-card"
       style={{ backgroundColor: '#FAF8F5' }}
     >
       {/* Top Left Corner Triangle */}
@@ -282,40 +282,31 @@ const FrameEditor = () => {
       </div>
 
       {/* Quote Section */}
-      <div className="absolute bottom-16 left-4 right-20">
-        <div className="relative bg-secondary/50 rounded-lg py-3 px-4">
-          {/* Quote marks */}
+      <div className="absolute bottom-10 left-4 right-16">
+        <div className="relative bg-secondary/50 rounded-lg py-2 px-4">
           <span 
-            className="absolute -top-3 left-0 text-2xl font-serif leading-none"
+            className="absolute -top-2 left-0 text-xl font-serif leading-none"
             style={{ color: 'hsl(142, 76%, 45%)' }}
           >
             ❝
           </span>
           <span 
-            className="absolute -bottom-3 right-0 text-2xl font-serif leading-none"
+            className="absolute -bottom-2 right-0 text-xl font-serif leading-none"
             style={{ color: 'hsl(142, 76%, 45%)' }}
           >
             ❞
           </span>
-          <p className="text-xs text-foreground text-center leading-relaxed">
+          <p className="text-xs text-foreground text-center leading-relaxed px-2">
             Wishing you a New Year filled with success, prosperity, and new opportunities. 
             May 2026 be a year of great achievements for all of us. Happy New Year!
           </p>
         </div>
       </div>
 
-      {/* Website URL */}
-      <div className="absolute bottom-4 left-4 flex items-center gap-1">
-        <div 
-          className="w-0 h-0"
-          style={{
-            borderTop: '4px solid transparent',
-            borderBottom: '4px solid transparent',
-            borderLeft: '6px solid hsl(142, 76%, 45%)',
-          }}
-        />
-        <span className="text-xs font-medium" style={{ color: 'hsl(142, 76%, 45%)' }}>
-          pixelorastudio.com
+      {/* Developer Credit */}
+      <div className="absolute bottom-3 left-4">
+        <span className="text-xs text-muted-foreground">
+          Developed by <span className="font-medium text-foreground">Ataur Rahman</span>
         </span>
       </div>
     </div>
@@ -336,7 +327,7 @@ const FrameEditor = () => {
             <div className="flex items-center justify-center">
               <div className="border-2 border-dashed border-border rounded-xl p-4 bg-muted/30">
                 {step === 1 && !imgSrc ? (
-                  <div className="w-[400px] h-[500px] flex items-center justify-center">
+                  <div className="w-[400px] h-[420px] flex items-center justify-center">
                     <p className="text-muted-foreground text-center">
                       Preview will appear here
                     </p>
