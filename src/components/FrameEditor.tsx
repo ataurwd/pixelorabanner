@@ -155,7 +155,7 @@ const FrameEditor = () => {
   const renderPreview = () => (
     <div
       ref={previewRef}
-      className="relative w-[400px] h-[400px] bg-card overflow-hidden shadow-card"
+      className="relative w-[400px] h-[500px] bg-card overflow-hidden shadow-card"
       style={{ backgroundColor: '#FAF8F5' }}
     >
       {/* Top Left Corner Triangle */}
@@ -230,18 +230,18 @@ const FrameEditor = () => {
       {/* Main Content Area */}
       <div className="absolute top-16 left-4 right-4 flex">
         {/* Left Side - Text */}
-        <div className="flex-1 pt-4">
+        <div className="flex-1 pt-4 pr-2">
           <h2 
-            className="text-3xl font-display font-bold italic"
+            className="text-2xl font-display font-bold italic"
             style={{ color: 'hsl(142, 76%, 45%)' }}
           >
             HAPPY
           </h2>
-          <h1 className="text-4xl font-display font-bold text-foreground -mt-1">
+          <h1 className="text-3xl font-display font-bold text-foreground -mt-1">
             NEW YEAR
           </h1>
           <p 
-            className="text-6xl font-display font-bold mt-1"
+            className="text-5xl font-display font-bold mt-1"
             style={{ 
               background: 'linear-gradient(180deg, hsl(142, 76%, 50%) 0%, hsl(142, 76%, 35%) 100%)',
               WebkitBackgroundClip: 'text',
@@ -253,32 +253,13 @@ const FrameEditor = () => {
           </p>
 
           {/* Sparkle decorations */}
-          <div className="absolute top-20 left-2 text-primary opacity-60">✦</div>
-          <div className="absolute top-36 left-24 text-primary opacity-40">✦</div>
-          <div className="absolute top-44 left-8 text-primary opacity-50">✦</div>
-
-          {/* Name & Designation */}
-          <div className="mt-4">
-            <h3 className="text-lg font-display font-bold text-foreground uppercase tracking-wide">
-              {fullName || "YOUR NAME"}
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              {designation || "Designation"}
-            </p>
-          </div>
+          <div className="absolute top-20 left-2 text-primary opacity-60 text-xs">✦</div>
+          <div className="absolute top-32 left-20 text-primary opacity-40 text-xs">✦</div>
         </div>
 
         {/* Right Side - Photo */}
-        <div className="relative w-[160px] h-[160px] mt-4">
-          {/* Arc border effect */}
-          <div 
-            className="absolute inset-0 rounded-full"
-            style={{
-              border: '6px solid hsl(142, 76%, 45%)',
-              clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% 100%, 50% 95%, 95% 95%, 95% 5%, 5% 5%, 5% 95%, 50% 95%, 50% 100%, 0 100%)',
-            }}
-          />
-          <div className="absolute inset-1 rounded-full overflow-hidden border-4 border-primary">
+        <div className="relative w-[140px] h-[140px] mt-2 flex-shrink-0">
+          <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-primary">
             {croppedImageUrl ? (
               <img src={croppedImageUrl} alt="Profile" className="w-full h-full object-cover" />
             ) : (
@@ -290,23 +271,33 @@ const FrameEditor = () => {
         </div>
       </div>
 
+      {/* Name & Designation - Below main content */}
+      <div className="absolute top-[220px] left-4">
+        <h3 className="text-base font-display font-bold text-foreground uppercase tracking-wide">
+          {fullName || "YOUR NAME"}
+        </h3>
+        <p className="text-sm text-muted-foreground mt-0.5">
+          {designation || "Designation"}
+        </p>
+      </div>
+
       {/* Quote Section */}
-      <div className="absolute bottom-12 left-4 right-20 px-2">
-        <div className="relative bg-secondary/50 rounded-lg p-3">
+      <div className="absolute bottom-16 left-4 right-20">
+        <div className="relative bg-secondary/50 rounded-lg py-3 px-4">
           {/* Quote marks */}
           <span 
-            className="absolute -top-2 -left-1 text-3xl font-serif"
+            className="absolute -top-3 left-0 text-2xl font-serif leading-none"
             style={{ color: 'hsl(142, 76%, 45%)' }}
           >
-            "
+            ❝
           </span>
           <span 
-            className="absolute -bottom-4 right-2 text-3xl font-serif"
+            className="absolute -bottom-3 right-0 text-2xl font-serif leading-none"
             style={{ color: 'hsl(142, 76%, 45%)' }}
           >
-            "
+            ❞
           </span>
-          <p className="text-xs text-foreground text-center leading-relaxed px-4">
+          <p className="text-xs text-foreground text-center leading-relaxed">
             Wishing you a New Year filled with success, prosperity, and new opportunities. 
             May 2026 be a year of great achievements for all of us. Happy New Year!
           </p>
@@ -314,7 +305,7 @@ const FrameEditor = () => {
       </div>
 
       {/* Website URL */}
-      <div className="absolute bottom-3 left-4 flex items-center gap-1">
+      <div className="absolute bottom-4 left-4 flex items-center gap-1">
         <div 
           className="w-0 h-0"
           style={{
@@ -345,7 +336,7 @@ const FrameEditor = () => {
             <div className="flex items-center justify-center">
               <div className="border-2 border-dashed border-border rounded-xl p-4 bg-muted/30">
                 {step === 1 && !imgSrc ? (
-                  <div className="w-[400px] h-[400px] flex items-center justify-center">
+                  <div className="w-[400px] h-[500px] flex items-center justify-center">
                     <p className="text-muted-foreground text-center">
                       Preview will appear here
                     </p>
