@@ -155,19 +155,31 @@ const FrameEditor = () => {
   const renderPreview = () => (
     <div
       ref={previewRef}
-      className="relative w-[320px] h-[320px] bg-gradient-to-br from-primary/10 via-card to-secondary rounded-2xl overflow-hidden shadow-card"
+      className="relative w-[320px] h-[400px] bg-gradient-to-br from-primary/10 via-card to-secondary rounded-2xl overflow-hidden shadow-card"
     >
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-10">
         <div className="absolute top-4 left-4 w-20 h-20 border-2 border-primary rounded-full" />
         <div className="absolute bottom-8 right-8 w-16 h-16 border-2 border-primary rounded-full" />
         <div className="absolute top-1/2 right-4 w-8 h-8 bg-primary rounded-full" />
+        {/* Festive sparkles */}
+        <div className="absolute top-8 right-12 w-3 h-3 bg-primary rounded-full animate-pulse" />
+        <div className="absolute top-16 left-8 w-2 h-2 bg-primary rounded-full animate-pulse" />
+        <div className="absolute bottom-24 left-12 w-2 h-2 bg-primary rounded-full animate-pulse" />
+      </div>
+
+      {/* Happy New Year Header */}
+      <div className="relative z-10 pt-4 text-center">
+        <h2 className="font-display text-2xl font-bold text-primary tracking-wide">
+          Happy New Year
+        </h2>
+        <p className="text-4xl font-display font-bold text-foreground mt-1">2026</p>
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full p-6">
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 pb-6 pt-2">
         {/* Photo circle */}
-        <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-primary shadow-glow mb-4">
+        <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary shadow-glow mb-3">
           {croppedImageUrl ? (
             <img src={croppedImageUrl} alt="Profile" className="w-full h-full object-cover" />
           ) : (
@@ -178,16 +190,21 @@ const FrameEditor = () => {
         </div>
 
         {/* Name and designation */}
-        <h3 className="font-display text-xl font-bold text-foreground text-center leading-tight">
-          {fullName || 'Your Name'}
+        <h3 className="font-display text-lg font-bold text-foreground text-center leading-tight">
+          {fullName || "Your Name"}
         </h3>
-        <p className="text-sm text-primary font-medium mt-1">
-          {designation || 'Designation'}
+        <p className="text-sm text-primary font-medium mt-0.5">
+          {designation || "Designation"}
+        </p>
+
+        {/* New Year Message */}
+        <p className="text-xs text-muted-foreground text-center mt-3 italic max-w-[200px]">
+          "Wishing you a year filled with joy, success, and endless possibilities!"
         </p>
 
         {/* Logo */}
-        <div className="absolute bottom-4 right-4">
-          <img src={logo} alt="Pixelora Studio" className="h-8 w-auto opacity-80" />
+        <div className="absolute bottom-3 right-3">
+          <img src={logo} alt="Pixelora Studio" className="h-6 w-auto opacity-80" />
         </div>
       </div>
 
@@ -212,7 +229,7 @@ const FrameEditor = () => {
             <div className="flex items-center justify-center">
               <div className="border-2 border-dashed border-border rounded-xl p-4 bg-muted/30">
                 {step === 1 && !imgSrc ? (
-                  <div className="w-[320px] h-[320px] flex items-center justify-center">
+                  <div className="w-[320px] h-[400px] flex items-center justify-center">
                     <p className="text-muted-foreground text-center">
                       Preview will appear here
                     </p>
