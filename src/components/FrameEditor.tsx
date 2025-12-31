@@ -155,62 +155,178 @@ const FrameEditor = () => {
   const renderPreview = () => (
     <div
       ref={previewRef}
-      className="relative w-[320px] h-[400px] bg-gradient-to-br from-primary/10 via-card to-secondary rounded-2xl overflow-hidden shadow-card"
+      className="relative w-[400px] h-[400px] bg-card overflow-hidden shadow-card"
+      style={{ backgroundColor: '#FAF8F5' }}
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-4 left-4 w-20 h-20 border-2 border-primary rounded-full" />
-        <div className="absolute bottom-8 right-8 w-16 h-16 border-2 border-primary rounded-full" />
-        <div className="absolute top-1/2 right-4 w-8 h-8 bg-primary rounded-full" />
-        {/* Festive sparkles */}
-        <div className="absolute top-8 right-12 w-3 h-3 bg-primary rounded-full animate-pulse" />
-        <div className="absolute top-16 left-8 w-2 h-2 bg-primary rounded-full animate-pulse" />
-        <div className="absolute bottom-24 left-12 w-2 h-2 bg-primary rounded-full animate-pulse" />
+      {/* Top Left Corner Triangle */}
+      <div 
+        className="absolute top-0 left-0 w-0 h-0"
+        style={{
+          borderLeft: '50px solid hsl(142, 76%, 45%)',
+          borderBottom: '50px solid transparent',
+        }}
+      />
+      <div 
+        className="absolute top-12 left-0 w-0 h-0"
+        style={{
+          borderLeft: '30px solid hsl(142, 76%, 45%)',
+          borderBottom: '30px solid transparent',
+        }}
+      />
+
+      {/* Top Right Corner Lines */}
+      <div className="absolute top-4 right-4 w-16 h-16">
+        <div 
+          className="absolute top-0 right-0 w-12 h-12"
+          style={{
+            border: '2px solid hsl(142, 76%, 45%)',
+            borderLeft: 'none',
+            borderBottom: 'none',
+          }}
+        />
+        <div 
+          className="absolute top-2 right-2 w-8 h-8"
+          style={{
+            border: '2px solid hsl(142, 76%, 45%)',
+            borderLeft: 'none',
+            borderBottom: 'none',
+          }}
+        />
       </div>
 
-      {/* Happy New Year Header */}
-      <div className="relative z-10 pt-4 text-center">
-        <h2 className="font-display text-2xl font-bold text-primary tracking-wide">
-          Happy New Year
-        </h2>
-        <p className="text-4xl font-display font-bold text-foreground mt-1">2026</p>
+      {/* Bottom Right Corner Triangles */}
+      <div 
+        className="absolute bottom-0 right-0 w-0 h-0"
+        style={{
+          borderRight: '80px solid hsl(142, 76%, 45%)',
+          borderTop: '80px solid transparent',
+        }}
+      />
+      <div 
+        className="absolute bottom-0 right-16 w-0 h-0"
+        style={{
+          borderRight: '40px solid hsl(142, 76%, 50%)',
+          borderTop: '60px solid transparent',
+        }}
+      />
+      <div 
+        className="absolute bottom-8 right-0 w-0 h-0"
+        style={{
+          borderRight: '50px solid hsl(142, 76%, 55%)',
+          borderTop: '40px solid transparent',
+        }}
+      />
+
+      {/* Logo - Top Right */}
+      <div className="absolute top-4 right-20">
+        <img src={logo} alt="Pixelora Studio" className="h-10 w-auto" />
       </div>
 
-      {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-6 pb-6 pt-2">
-        {/* Photo circle */}
-        <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary shadow-glow mb-3">
-          {croppedImageUrl ? (
-            <img src={croppedImageUrl} alt="Profile" className="w-full h-full object-cover" />
-          ) : (
-            <div className="w-full h-full bg-muted flex items-center justify-center">
-              <span className="text-muted-foreground text-sm">Photo</span>
-            </div>
-          )}
+      {/* Tagline - Top Left */}
+      <p className="absolute top-6 left-14 text-sm font-medium italic text-foreground">
+        Creative, Together
+      </p>
+
+      {/* Main Content Area */}
+      <div className="absolute top-16 left-4 right-4 flex">
+        {/* Left Side - Text */}
+        <div className="flex-1 pt-4">
+          <h2 
+            className="text-3xl font-display font-bold italic"
+            style={{ color: 'hsl(142, 76%, 45%)' }}
+          >
+            HAPPY
+          </h2>
+          <h1 className="text-4xl font-display font-bold text-foreground -mt-1">
+            NEW YEAR
+          </h1>
+          <p 
+            className="text-6xl font-display font-bold mt-1"
+            style={{ 
+              background: 'linear-gradient(180deg, hsl(142, 76%, 50%) 0%, hsl(142, 76%, 35%) 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            2026
+          </p>
+
+          {/* Sparkle decorations */}
+          <div className="absolute top-20 left-2 text-primary opacity-60">✦</div>
+          <div className="absolute top-36 left-24 text-primary opacity-40">✦</div>
+          <div className="absolute top-44 left-8 text-primary opacity-50">✦</div>
+
+          {/* Name & Designation */}
+          <div className="mt-4">
+            <h3 className="text-lg font-display font-bold text-foreground uppercase tracking-wide">
+              {fullName || "YOUR NAME"}
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              {designation || "Designation"}
+            </p>
+          </div>
         </div>
 
-        {/* Name and designation */}
-        <h3 className="font-display text-lg font-bold text-foreground text-center leading-tight">
-          {fullName || "Your Name"}
-        </h3>
-        <p className="text-sm text-primary font-medium mt-0.5">
-          {designation || "Designation"}
-        </p>
-
-        {/* New Year Message */}
-        <p className="text-xs text-muted-foreground text-center mt-3 italic max-w-[200px]">
-          "Wishing you a year filled with joy, success, and endless possibilities!"
-        </p>
-
-        {/* Logo */}
-        <div className="absolute bottom-3 right-3">
-          <img src={logo} alt="Pixelora Studio" className="h-6 w-auto opacity-80" />
+        {/* Right Side - Photo */}
+        <div className="relative w-[160px] h-[160px] mt-4">
+          {/* Arc border effect */}
+          <div 
+            className="absolute inset-0 rounded-full"
+            style={{
+              border: '6px solid hsl(142, 76%, 45%)',
+              clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% 100%, 50% 95%, 95% 95%, 95% 5%, 5% 5%, 5% 95%, 50% 95%, 50% 100%, 0 100%)',
+            }}
+          />
+          <div className="absolute inset-1 rounded-full overflow-hidden border-4 border-primary">
+            {croppedImageUrl ? (
+              <img src={croppedImageUrl} alt="Profile" className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full bg-muted flex items-center justify-center">
+                <span className="text-muted-foreground text-xs">Photo</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Corner accents */}
-      <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-primary/20 to-transparent" />
-      <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-primary/10 to-transparent" />
+      {/* Quote Section */}
+      <div className="absolute bottom-12 left-4 right-20 px-2">
+        <div className="relative bg-secondary/50 rounded-lg p-3">
+          {/* Quote marks */}
+          <span 
+            className="absolute -top-2 -left-1 text-3xl font-serif"
+            style={{ color: 'hsl(142, 76%, 45%)' }}
+          >
+            "
+          </span>
+          <span 
+            className="absolute -bottom-4 right-2 text-3xl font-serif"
+            style={{ color: 'hsl(142, 76%, 45%)' }}
+          >
+            "
+          </span>
+          <p className="text-xs text-foreground text-center leading-relaxed px-4">
+            Wishing you a New Year filled with success, prosperity, and new opportunities. 
+            May 2026 be a year of great achievements for all of us. Happy New Year!
+          </p>
+        </div>
+      </div>
+
+      {/* Website URL */}
+      <div className="absolute bottom-3 left-4 flex items-center gap-1">
+        <div 
+          className="w-0 h-0"
+          style={{
+            borderTop: '4px solid transparent',
+            borderBottom: '4px solid transparent',
+            borderLeft: '6px solid hsl(142, 76%, 45%)',
+          }}
+        />
+        <span className="text-xs font-medium" style={{ color: 'hsl(142, 76%, 45%)' }}>
+          pixelorastudio.com
+        </span>
+      </div>
     </div>
   );
 
@@ -229,7 +345,7 @@ const FrameEditor = () => {
             <div className="flex items-center justify-center">
               <div className="border-2 border-dashed border-border rounded-xl p-4 bg-muted/30">
                 {step === 1 && !imgSrc ? (
-                  <div className="w-[320px] h-[400px] flex items-center justify-center">
+                  <div className="w-[400px] h-[400px] flex items-center justify-center">
                     <p className="text-muted-foreground text-center">
                       Preview will appear here
                     </p>
